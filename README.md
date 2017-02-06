@@ -1,1 +1,1 @@
-# cpsc3620_project
+# CPSC 3620 - Group Project
