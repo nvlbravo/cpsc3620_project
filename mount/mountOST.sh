@@ -7,4 +7,4 @@
 
    #Mount OST
    mkdir /mnt/ost0 
-   mount –t lustre /dev/sdb /mnt/ost0
+   sudo mount –t lustre /dev/sdb /mnt/ost0

@@ -10,8 +10,8 @@
    
    #Mount MGT
    mkdir /mnt/mgt
-   mount –t lustre /dev/sdb /mnt/mgt
+   sudo mount –t lustre /dev/sdb /mnt/mgt
    
    #Mount MDT
    mkdir /mnt/mdt
-   mount –t lustre /dev/sdc /mnt/mdt
+   sudo mount –t lustre /dev/sdc /mnt/mdt

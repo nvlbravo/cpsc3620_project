@@ -1,8 +1,8 @@
 #!/bin/bash
 
    #kernel/firmware update and install
-   yum update kernel-firmware -y
-   yum install dracut-kernel -y
+   sudo yum update kernel-firmware -y
+   sudo yum install dracut-kernel -y
 
 
    #make entry in /etc/modprobe.d/lustre.conf

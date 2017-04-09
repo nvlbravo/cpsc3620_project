@@ -19,7 +19,7 @@
    fi
 
    #disable iptables
-   chkconfig --levels 345 iptables off
-   chkconfig --levels 345 ip6tables off
+   sudo chkconfig --levels 345 iptables off
+   sudo chkconfig --levels 345 ip6tables off
 
-   reboot
+   sudo reboot
