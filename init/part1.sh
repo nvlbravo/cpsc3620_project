@@ -6,15 +6,15 @@
 
    #if file doesn't exist create file and write to
    if [ ! -e /etc/sysconfig/selinux ]; then
-      echo "SELINUX=disabled" > /etc/sysconfig/selinux
+      sudo echo "SELINUX=disabled" > /etc/sysconfig/selinux
    else
       #if file does exist search for SELINUX in file, and set to disabled
       exists='cat /etc/sysconfig/selinux | grep SELINUX'
       if [ exists ]; then
-         sed -ie 's/SELINUX=.*$/SELINUX=disabled/' /etc/sysconfig/selinux
+         sudo sed -ie 's/SELINUX=.*$/SELINUX=disabled/' /etc/sysconfig/selinux
       else
       #if SELINUX tag does not exist in file add tag, and disable
-         echo "SELINUX=disabled" >> /etc/sysconfig/selinux
+         sudo echo "SELINUX=disabled" >> /etc/sysconfig/selinux
       fi
    fi
 
