@@ -10,11 +10,11 @@
 
    #find if file exists, if it does, write new option to file
    #if file does not exist create the file and write to it
-   if [! -e /etc/modprobe.d/lustre.conf]; then
+   if [ ! -e /etc/modprobe.d/lustre.conf ]; then
       sudo echo "options lnet networks=tcp(eth3)" > /etc/modprobe.d/lustre.conf
    else
       exists='cat /etc/sysconfig/selinux | grep options lnet networks'
-      if [exists]; then
+      if [ exists ]; then
          sudo sed -ie 's/options lnet networks.*$/options lnet networks=tcp(eth3)/' /etc/modprobe.d/lustre.conf
       else
          sudo echo "options lnet networks=tcp(eth3)" >> /etc/modprobe.d/lustre.conf

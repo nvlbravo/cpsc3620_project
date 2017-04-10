@@ -9,27 +9,28 @@ if [ -e "$path"clientStepLog.txt ]; then
    exists3 = 'cat $path"clientStepLog.txt | grep 3'
    exists4 = 'cat $path"clientStepLog.txt | grep 4'
    exists5 = 'cat $path"clientStepLog.txt | grep 5'
-   if[exists]; then
+   if[ exists ]; then
       #part 2
-      sudo "$path"part2.sh | -a "$path"clientpLog.txt
+      sudo "$path"part2.sh >> "$path"clientpLog.txt
       echo "2" > "$path"clientStepLog.txt
-   elif [exists2]; then
+   elif [ exists2 ]; then
       #part 3
-      sudo "$path"part3(client).sh | tee -a "$path"clientPLog.txt
+      sudo "$path"part3(client).sh >> "$path"clientPLog.txt
       echo "3" > "$path"clientStepLog.txt
-   elif [exists3]; then
+   elif [ exists3 ]; then
       #part 4
-      sudo "$path"part4(client).sh | -a "$path"clientPLog.txt
+      sudo "$path"part4(client).sh >> "$path"clientPLog.txt
       echo "4" > "$path"clientStepLog.txt
-   elif [exists4]; then
+   elif [ exists4 ]; then
       #part 5 (mount)
-      sudo "$path"mountClient.sh | -a "$path"clientPLog.txt
+      sudo "$path"mountClient.sh >> "$path"clientPLog.txt
       echo "5" > "$path"clientStepLog.txt
-   elif [exists5]; then
+   elif [ exists5 ]; then
       #end process
       echo "done" >> "$path"clientStepLog.txt
+   fi
 else
   #part 1
-   sudo "$path"part1.sh | -a "$path"clientPLog1.txt
+   sudo "$path"part1.sh >> "$path"clientPLog1.txt
    echo "1" >> "$path"clientStepLog.txt
 fi

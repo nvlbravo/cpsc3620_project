@@ -9,27 +9,28 @@ if [ -e "$path"mgtStepLog.txt ]; then
    exists3 = 'cat $path"mgtStepLog.txt | grep 3'
    exists4 = 'cat $path"mgtStepLog.txt | grep 4'
    exists5 = 'cat $path"mgtStepLog.txt | grep 5'
-   if[exists]; then
+   if[ exists ]; then
       #part 2
-      sudo "$path"part2.sh | -a "$path"mgtpLog.txt
+      sudo "$path"part2.sh >> "$path"mgtpLog.txt
       echo "2" > "$path"mgtStepLog.txt
-   elif [exists2]; then
+   elif [ exists2 ]; then
       #part 3
-      sudo "$path"part3(server).sh | tee -a "$path"mgtPLog.txt
+      sudo "$path"part3(server).sh >> "$path"mgtPLog.txt
       echo "3" > "$path"mgtStepLog.txt
-   elif [exists3]; then
+   elif [ exists3 ]; then
       #part 4
-      sudo "$path"part4(server).sh | -a "$path"mgtPLog.txt
+      sudo "$path"part4(server).sh >> "$path"mgtPLog.txt
       echo "4" > "$path"mgtStepLog.txt
-   elif [exists4]; then
+   elif [ exists4 ]; then
       #part 5 (mount)
-      sudo "$path"mountMGT.sh | -a "$path"mgtPLog.txt
+      sudo "$path"mountMGT.sh >> "$path"mgtPLog.txt
       echo "5" > "$path"mgtStepLog.txt
-   elif [exists5]; then
+   elif [ exists5 ]; then
       #end process
       echo "done" >> "$path"mgtStepLog.txt
+   fi
 else
   #part 1
-   sudo "$path"part1.sh | -a "$path"mgtPLog1.txt
+   sudo "$path"part1.sh >> "$path"mgtPLog1.txt
    echo "1" >> "$path"mgtStepLog.txt
 fi

@@ -9,27 +9,28 @@ if [ -e "$path"ostStepLog.txt ]; then
    exists3 = 'cat $path"ostStepLog.txt | grep 3'
    exists4 = 'cat $path"ostStepLog.txt | grep 4'
    exists5 = 'cat $path"ostStepLog.txt | grep 5'
-   if[exists]; then
+   if[ exists ]; then
       #part 2
-      sudo "$path"part2.sh | -a "$path"ostpLog.txt
+      sudo "$path"part2.sh >> "$path"ostpLog.txt
       echo "2" > "$path"ostStepLog.txt
-   elif [exists2]; then
+   elif [ exists2 ]; then
       #part 3
-      sudo "$path"part3(server).sh | tee -a "$path"ostPLog.txt
+      sudo "$path"part3(server).sh >> "$path"ostPLog.txt
       echo "3" > "$path"ostStepLog.txt
-   elif [exists3]; then
+   elif [ exists3 ]; then
       #part 4
-      sudo "$path"part4(server).sh | -a "$path"ostPLog.txt
+      sudo "$path"part4(server).sh >> "$path"ostPLog.txt
       echo "4" > "$path"ostStepLog.txt
-   elif [exists4]; then
+   elif [ exists4 ]; then
       #part 5 (mount)
-      sudo "$path"mountOST.sh | -a "$path"ostPLog.txt
+      sudo "$path"mountOST.sh >> "$path"ostPLog.txt
       echo "5" > "$path"ostStepLog.txt
-   elif [exists5]; then
+   elif [ exists5 ]; then
       #end process
       echo "done" >> "$path"ostStepLog.txt
+   fi
 else
   #part 1
-   sudo "$path"part1.sh | -a "$path"ostPLog1.txt
+   sudo "$path"part1.sh >> "$path"ostPLog1.txt
    echo "1" >> "$path"ostStepLog.txt
 fi
