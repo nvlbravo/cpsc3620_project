@@ -1,0 +1,32 @@
+#!/bin/bash
+#PBS -N setup_spruce_cluster
+#PBS -l select=1:ncpus=1:mem=4gb,walltime=0:30:00
+#PBS -J 1-6
+
+cd $PBS_O_WORKDIR
+
+IP=$(sed -n ${PBS_ARRAY_INDEX}p input.txt)
+
+echo "=== Spruce Cluster Setup ==="
+echo "> starting..."
+echo "> job $PBS_ARRAY_INDEX started."
+echo "> copying github..."
+ssh $IP -p 22 -t "sudo git clone git://github.com/nvlbravo/cpsc3620_project.git /project"
+ssh $IP -p 22 -t "sudo chmod 755 /project/*/*.sh"
+
+if [ $PBS_ARRAY_INDEX -eq 1 ]; then
+    echo "> MGS-MDT NODE ready."
+    ssh $IP -p 22 -t "sudo cp /project/managers/mgtManager.sh /etc/init.d"
+    ssh $IP -p 22 -t "sudo chmod 755 /etc/init.d/mgtManager.sh"
+    ssh $IP -p 22 -t "sudo reboot"
+elif [ $PBS_ARRAY_INDEX -ge 2 -a $PBS_ARRAY_INDEX -le 3 ]; then
+    echo "> OSS NODE ready."
+    ssh $IP -p 22 -t "sudo cp /project/managers/ostManager.sh /etc/init.d"
+    ssh $IP -p 22 -t "sudo chmod 755 /etc/init.d/ostManager.sh"
+    ssh $IP -p 22 -t "sudo reboot"
+elif [ $PBS_ARRAY_INDEX -ge 4 -a $PBS_ARRAY_INDEX -le 6 ]; then
+    echo "> CLIENT NODE ready."
+    ssh $IP -p 22 -t "sudo cp /project/managers/clientManager.sh /etc/init.d"
+    ssh $IP -p 22 -t "sudo chmod 755 /etc/init.d/clientManager.sh"
+    ssh $IP -p 22 -t "sudo reboot"
+fi
