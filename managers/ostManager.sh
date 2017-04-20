@@ -1,7 +1,7 @@
 #!/bin/sh
 #Since there are several reboots, we found a way to access specific scripts within different phases of the configuration process
 
-path='/users/nbravo/project/'
+path='/project/'
 
 if [ -e "$path"logs/ostStepLog.txt ]; then
   exists=`cat "$path"logs/ostStepLog.txt`
@@ -18,8 +18,7 @@ if [ -e "$path"logs/ostStepLog.txt ]; then
     sudo "$path"lustre/./part4_server.sh >> "$path"logs/ostPLog.txt 2>&1
     echo "4" > "$path"logs/ostStepLog.txt
   elif [ $exists = "4" ]; then
-    #part 5 _mount
-    # TODO - fix this
+    #part 5 mount
     #sudo "$path"mount/./mountOST.sh >> "$path"logs/ostPLog.txt 2>&1
     echo "5" > "$path"logs/ostStepLog.txt
   elif [ $exists = "5" ]; then

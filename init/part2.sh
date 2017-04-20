@@ -22,3 +22,5 @@ sudo echo "=== SETUP - PART 2 ==="
          sudo echo "options lnet networks=tcp(eth3)" >> /etc/modprobe.d/lustre.conf
       fi
    fi
+
+   sudo reboot

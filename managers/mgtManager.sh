@@ -18,8 +18,7 @@ if [ -e "$path"logs/mgtStepLog.txt ]; then
     sudo "$path"lustre/./part4_server.sh >> "$path"logs/mgtPLog.txt 2>&1
     sudo echo "4" > "$path"logs/mgtStepLog.txt
   elif [ $exists = "4" ]; then
-    #part 5 _mount
-    # TODO - fix this
+    #part 5 mount
     #sudo "$path"mount/./mountMGT.sh >> "$path"logs/mgtPLog.txt 2>&1
     sudo echo "5" > "$path"logs/mgtStepLog.txt
   elif [ $exists = "5" ]; then

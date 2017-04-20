@@ -3,7 +3,7 @@
 sudo echo "=== SETUP - PART 4 ==="
 
    #php extensionf
-   #yum install net-snmp libyaml -y
+   yum install net-snmp libyaml -y
 
    #downloads Lustre client modules
 

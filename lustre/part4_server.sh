@@ -2,22 +2,33 @@
 
 sudo echo "=== SETUP - PART 4 ==="
 
-   #kernel/firmware update and install
-   yum update kernel-firmware -y
-   yum install dracut-kernel -y
+  yum install openmpi net-snmp net-snmp-utils libyaml sg3_utils -y
 
-   #make entry in /etc/modprobe.d/lustre.conf
-   #configure lnet option to configure ethernet/networked fs
+  # downloads lustre Server modules
+  # from https://downloads.hpdd.intel.com/public/lustre/lustre-2.7.0/el6.6/server/RPMS/x86_64/
+  # download: lustre-2.7.0 lustre-iokit lustre-modules lustre-osd-ldiskfs lustre-osd-ldiskfs-mount lustre-tests
+  wget https://downloads.hpdd.intel.com/public/lustre/lustre-2.7.0/el6.6/server/RPMS/x86_64/lustre-2.7.0-2.6.32_504.8.1.el6_lustre.x86_64.x86_64.rpm --no-check-certificate
+  wget https://downloads.hpdd.intel.com/public/lustre/lustre-2.7.0/el6.6/server/RPMS/x86_64/lustre-iokit-2.7.0-2.6.32_504.8.1.el6_lustre.x86_64.x86_64.rpm --no-check-certificate
+  wget https://downloads.hpdd.intel.com/public/lustre/lustre-2.7.0/el6.6/server/RPMS/x86_64/lustre-modules-2.7.0-2.6.32_504.8.1.el6_lustre.x86_64.x86_64.rpm --no-check-certificate
+  wget https://downloads.hpdd.intel.com/public/lustre/lustre-2.7.0/el6.6/server/RPMS/x86_64/lustre-osd-ldiskfs-2.7.0-2.6.32_504.8.1.el6_lustre.x86_64.x86_64.rpm --no-check-certificate
+  wget https://downloads.hpdd.intel.com/public/lustre/lustre-2.7.0/el6.6/server/RPMS/x86_64/lustre-osd-ldiskfs-mount-2.7.0-2.6.32_504.8.1.el6_lustre.x86_64.x86_64.rpm --no-check-certificate
+  wget https://downloads.hpdd.intel.com/public/lustre/lustre-2.7.0/el6.6/server/RPMS/x86_64/lustre-tests-2.7.0-2.6.32_504.8.1.el6_lustre.x86_64.x86_64.rpm --no-check-certificate
 
-   #find if file exists, if it does, write new option to file
-   #if file does not exist create the file and write to it
-   if [ ! -e /etc/modprobe.d/lustre.conf ]; then
-      echo "options lnet networks=tcp(eth3)" > /etc/modprobe.d/lustre.conf
-   else
-      exists='cat /etc/sysconfig/selinux | grep options lnet networks'
-      if [ exists ]; then
-         sed -ie 's/options lnet networks.*$/options lnet networks=tcp(eth3)/' /etc/modprobe.d/lustre.conf
-      else
-         echo "options lnet networks=tcp(eth3)" >> /etc/modprobe.d/lustre.conf
-      fi
-   fi
+  # Download e2fsprogs
+  # from https://downloads.hpdd.intel.com/public/e2fsprogs/latest/el6/RPMS/x86_64
+  # download: e2fsprogs-1.42.12.wc1-7.el6.x86_64.rpm e2fsprogs-libs-1.42.12.wc1-7.el6.x86_64.rpm libcom_err-1.42.12.wc1-7.el6.x86_64.rpm libss-1.42.12.wc1-7.el6.x86_64.rpm
+  wget https://downloads.hpdd.intel.com/public/e2fsprogs/latest/el6/RPMS/x86_64/e2fsprogs-1.42.13.wc5-7.el6.x86_64.rpm --no-check-certificate
+  wget https://downloads.hpdd.intel.com/public/e2fsprogs/latest/el6/RPMS/x86_64/e2fsprogs-libs-1.42.13.wc5-7.el6.x86_64.rpm --no-check-certificate
+  wget https://downloads.hpdd.intel.com/public/e2fsprogs/latest/el6/RPMS/x86_64/libcom_err-1.42.13.wc5-7.el6.x86_64.rpm --no-check-certificate
+  wget https://downloads.hpdd.intel.com/public/e2fsprogs/latest/el6/RPMS/x86_64/libcom_err-devel-1.42.13.wc5-7.el6.x86_64.rpm --no-check-certificate
+  wget https://downloads.hpdd.intel.com/public/e2fsprogs/latest/el6/RPMS/x86_64/libss-1.42.13.wc5-7.el6.x86_64.rpm --no-check-certificate
+
+  # install e2fsprogs
+  rpm -Uvh e2fsprogs-1.42.13.wc5-7.el6.x86_64.rpm e2fsprogs-libs-1.42.13.wc5-7.el6.x86_64.rpm libcom_err-1.42.13.wc5-7.el6.x86_64.rpm libss-1.42.13.wc5-7.el6.x86_64.rpm libcom_err-devel-1.42.13.wc5-7.el6.x86_64.rpm
+
+  # install lustre Server modules
+  rpm -ivh lustre-modules-*
+  rpm -ivh lustre-osd-ldiskfs-*
+  rpm -ivh lustre-2.7*
+  rpm -ivh lustre-iokit-2.7*
+  rpm -ivh lustre-tests-*
