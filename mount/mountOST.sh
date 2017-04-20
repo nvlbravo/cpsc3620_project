@@ -6,5 +6,5 @@
    --mgsnode={MGSIP}@tcp --index=0 /dev/sdb
 
    #Mount OST
-   mkdir /mnt/ost0 
+   sudo mkdir /mnt/ost0 
    sudo mount –t lustre /dev/sdb /mnt/ost0

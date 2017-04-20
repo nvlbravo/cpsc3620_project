@@ -33,4 +33,10 @@ sudo echo "=== SETUP - PART 4 ==="
   rpm -ivh lustre-iokit-2.7*
   rpm -ivh lustre-tests-*
 
+  sudo touch /etc/sysconfig/modules/lnet.modules
+  # sudo echo '#!/bin/sh' >> /etc/sysconfigs/modules/lnet.modules
+  # sudo echo "if [ ! -c /dev/lnet ] ; then" >> /etc/sysconfigs/modules/lnet.modules
+  # sudo echo "    exec /sbin/modprobe lnet >/dev/null 2>&1" >> /etc/sysconfigs/modules/lnet.modules
+  # sudo echo "fi" >> /etc/sysconfigs/modules/lnet.modules
+
   sudo reboot
