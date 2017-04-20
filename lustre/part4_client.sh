@@ -14,3 +14,5 @@ sudo echo "=== SETUP - PART 4 ==="
    #Install Lustre client modules
    sudo rpm -ivh lustre-client-modules-2.7.0-2.6.32_504.8.1.el6.x86_64.x86_64.rpm
    sudo rpm -ivh lustre-client-2.7.0-2.6.32_504.8.1.el6.x86_64.x86_64.rpm
+
+   sudo reboot

@@ -32,3 +32,5 @@ sudo echo "=== SETUP - PART 4 ==="
   rpm -ivh lustre-2.7*
   rpm -ivh lustre-iokit-2.7*
   rpm -ivh lustre-tests-*
+
+  sudo reboot
