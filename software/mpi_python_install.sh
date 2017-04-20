@@ -8,11 +8,10 @@ sudo bash Anaconda3-4.3.1-Linux-x86_64.sh -b -p /packages/anaconda3
 # install mpi
 tar -xvf openmpi-1.10.3.tar.gz
 cd openmpi-1.10.3
-./configure --prefix="/packages/openmpi/1.10.3"
+./configure --prefix="/software/openmpi/1.10.3"
 sudo make && sudo make install
 
 # cleanup
-rm ~/Anaconda3-4.3.1-Linux-x86_64.sh
+cd ..
 rm openmpi-1.10.3.tar.gz
-rm -rf ~/openmpi-1.10.3
-rmdir ~/openmpi-1.10.3
+rm -rf openmpi-1.10.3
