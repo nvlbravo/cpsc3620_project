@@ -1,6 +1,8 @@
 #!/bin/bash
 #Source: http://lustre.ornl.gov/lustre101-courses/content/C1/L3/LustreBasicInstall.pdf
 
+sudo echo "=== SETUP - PART 1 ==="
+
 #server and client init
    #write to sysconfig/selinux and disable SELINUX flag
 

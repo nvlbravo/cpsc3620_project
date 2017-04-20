@@ -1,7 +1,9 @@
 #!/bin/bash
 
-#Install Lustre 
-   #1. Downloads Lustre client kernel 
+sudo echo "=== SETUP - PART 3 ==="
+
+#Install Lustre
+   #1. Downloads Lustre client kernel
    wget \
    ftp://mirror.switch.ch/pool/4/mirror/scientificlinux/6.3/x86_64/updates/security/kernel-2.6.32-504.8.1.el6.x86_64.rpm
 
@@ -11,5 +13,5 @@
    #3. Installs kernel
    /sbin/new-kernel-pkg --package kernel --mkinitrd \
    --dracut --depmod --install 2.6.32-504.8.1.el6.x86_64
-   
+
    sudo reboot

@@ -1,5 +1,6 @@
 #!/bin/bash
 
+sudo echo "=== SETUP - PART 4 ==="
 
    #php extensionf
    #yum install net-snmp libyaml -y

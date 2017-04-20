@@ -28,6 +28,8 @@ if [ -e "$path"logs/mgtStepLog.txt ]; then
   fi
 else
   #part 1
-   sudo "$path"init/./part1.sh >> "$path"logs/mgtPLog.txt 2>&1
-   sudo echo "1" > "$path"logs/mgtStepLog.txt
+  sudo touch "$path"logs/mgtPLog.txt
+  sudo touch "$path"logs/mgtStepLog.txt
+  sudo "$path"init/./part1.sh >> "$path"logs/mgtPLog.txt 2>&1
+  sudo echo "1" > "$path"logs/mgtStepLog.txt
 fi

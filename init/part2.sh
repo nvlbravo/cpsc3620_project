@@ -1,5 +1,7 @@
 #!/bin/bash
 
+sudo echo "=== SETUP - PART 2 ==="
+
    #kernel/firmware update and install
    sudo yum update kernel-firmware -y
    sudo yum install dracut-kernel -y
