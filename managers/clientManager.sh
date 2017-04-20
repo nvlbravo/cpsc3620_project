@@ -11,14 +11,14 @@ if [ -e "$path"log/clientStepLog.txt ]; then
     sudo echo "2" > "$path"log/clientStepLog.txt
   elif [ $exists = "2" ]; then
     #part 3
-    sudo "$path"lustre/./part3(client).sh >> "$path"log/clientPLog.txt 2>&1
+    sudo "$path"lustre/./part3_client.sh >> "$path"log/clientPLog.txt 2>&1
     sudo echo "3" > "$path"log/clientStepLog.txt
   elif [ $exists = "3" ]; then
     #part 4
-    sudo "$path"lustre/./part4(client).sh >> "$path"log/clientPLog.txt 2>&1
+    sudo "$path"lustre/./part4_client.sh >> "$path"log/clientPLog.txt 2>&1
     sudo echo "4" > "$path"log/clientStepLog.txt
   elif [ $exists = "4" ]; then
-    #part 5 (mount)
+    #part 5 _mount
     # TODO - fix this
     #sudo "$path"mount/./mountClient.sh >> "$path"log/clientPLog.txt 2>&1
     sudo echo "5" > "$path"log/clientStepLog.txt

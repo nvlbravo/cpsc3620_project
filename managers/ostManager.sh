@@ -11,14 +11,14 @@ if [ -e "$path"log/ostStepLog.txt ]; then
     echo "2" > "$path"log/ostStepLog.txt
   elif [ $exists = "2" ]; then
     #part 3
-    sudo "$path"lustre/./part3(server).sh >> "$path"log/ostPLog.txt 2>&1
+    sudo "$path"lustre/./part3_server.sh >> "$path"log/ostPLog.txt 2>&1
     echo "3" > "$path"log/ostStepLog.txt
   elif [ $exists = "3" ]; then
     #part 4
-    sudo "$path"lustre/./part4(server).sh >> "$path"log/ostPLog.txt 2>&1
+    sudo "$path"lustre/./part4_server.sh >> "$path"log/ostPLog.txt 2>&1
     echo "4" > "$path"log/ostStepLog.txt
   elif [ $exists = "4" ]; then
-    #part 5 (mount)
+    #part 5 _mount
     # TODO - fix this
     #sudo "$path"mount/./mountOST.sh >> "$path"log/ostPLog.txt 2>&1
     echo "5" > "$path"log/ostStepLog.txt
