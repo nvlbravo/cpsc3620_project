@@ -24,7 +24,7 @@ if [ -e "$path"logs/clientStepLog.txt ]; then
   elif [ $exists = "5" ]; then
     #end process
     sudo echo "done" >> "$path"logs/clientStepLog.txt
-  fi<
+  fi
 else
   #part 1
   sudo touch "$path"logs/clientPLog.txt
