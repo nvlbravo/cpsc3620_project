@@ -1,0 +1,7 @@
+Commands:
+touch /mnt/lustre/file
+ls /mnt/lustre/
+rm /mnt/lustre/file
+
+Output:
+file
